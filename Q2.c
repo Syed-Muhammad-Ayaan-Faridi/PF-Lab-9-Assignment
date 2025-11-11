@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void studentStanding(int array[], int upperbound)
+float studentStanding(int array[], int upperbound)
 {
     int marks,Total = 0;
     float avgMarks=0.0;
@@ -17,7 +17,7 @@ void studentStanding(int array[], int upperbound)
         Total += array[i];
     }
     avgMarks = (float)Total/(upperbound-1);
-    printf("Average marks: %.2f\n",avgMarks);
+    // printf("Average marks: %.2f\n",avgMarks);
     //Checking fail codition wrt Marks
     for (int i = 0; i < (upperbound-1); i++)
     {
@@ -25,7 +25,7 @@ void studentStanding(int array[], int upperbound)
         {
             printf("Fail\n");
             printf("Reason: Failed asyu have less than 40 marks in subject %d\n",(i+1));
-            return;
+            return avgMarks;
         }
     }
     //Checking failed condition wrt Average marks
@@ -36,13 +36,13 @@ void studentStanding(int array[], int upperbound)
     else
     {
         printf("FAILED\nReason: Failed as your average marks is less than 50\n");
-        return;
     }
+    return avgMarks;
 }
 
 int main()
 {
     int marks[4], mark;
-    studentStanding(marks,4);
+    printf("Average Marks: %.2f\n",studentStanding(marks,4));
     return 0;
 }
